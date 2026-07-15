@@ -1,9 +1,11 @@
 __pycache__/
 *.pyc
 *.inspect.ndjson
+~$*
 .ipynb_checkpoints/
 data/
 outputs/
+wheels/
 presentation/rendered_pages/
 presentation/preview_pptx/
 *.pt

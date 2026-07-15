@@ -15,8 +15,10 @@
 当前本机已验证：
 
 - Python: `E:\Program Files\python\python.exe`
-- torch: `2.8.0+cpu`
-- torchvision: `0.23.0+cpu`
+- GPU: `NVIDIA GeForce RTX 4060 Laptop GPU`
+- torch: `2.8.0+cu126`
+- torchvision: `0.23.0+cu126`
+- CUDA available: `True`
 
 如果换环境，先安装：
 
@@ -24,7 +26,17 @@
 python -m pip install -r requirements.txt
 ```
 
-有 NVIDIA GPU 时，建议按 PyTorch 官网安装 CUDA 版 torch/torchvision，再运行正式实验。
+有 NVIDIA GPU 时，建议安装 CUDA 版 torch/torchvision。当前本机使用过的安装方式是：
+
+```powershell
+python -m pip install --force-reinstall torch==2.8.0+cu126 torchvision==0.23.0+cu126 --index-url https://download.pytorch.org/whl/cu126
+```
+
+如果官方 PyTorch 源下载过慢，可以先下载 wheel 到本地，再用：
+
+```powershell
+python -m pip install --force-reinstall --no-deps .\wheels\torch-2.8.0+cu126-cp313-cp313-win_amd64.whl .\wheels\torchvision-0.23.0+cu126-cp313-cp313-win_amd64.whl
+```
 
 ## 本地流程验证
 
@@ -35,6 +47,14 @@ python run_experiment.py --synthetic --quick --skip-gold --out-dir outputs\smoke
 ```
 
 我已在本机验证该命令可以跑通，并能生成结果 CSV 和两张图。
+
+GPU 链路验证命令：
+
+```powershell
+python run_experiment.py --synthetic --quick --skip-gold --out-dir outputs\gpu_smoke --force-retrain
+```
+
+本机验证输出包含 `device=cuda`。
 
 ## 正式实验
 
@@ -50,5 +70,4 @@ python run_experiment.py --pretrained --out-dir outputs\full --batch-size 256 --
 python run_experiment.py --pretrained --skip-gold --out-dir outputs\full_no_gold --batch-size 256 --base-epochs 5 --amnesiac-epochs 3 --badteacher-epochs 1 --force-retrain
 ```
 
-当前机器只有 CPU，完整 ResNet18 + CIFAR100 训练会非常慢；建议把正式实验放到 GPU 环境跑。CPU 环境可以用 `--quick` 或调小 `--max-retain-train` 等参数检查流程。
-
+当前机器已能识别 RTX 4060 并使用 CUDA。完整实验的主要外部依赖是 CIFAR-100 数据集下载；如果官方源下载不稳定，可以先手动准备 `data\cifar-100-python.tar.gz`，再运行上面的正式实验命令。
