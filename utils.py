@@ -58,7 +58,7 @@ def fit_one_cycle(epochs,  model, train_loader, val_loader, device, pretrained_l
     except:
         optimizer = torch.optim.Adam(model.parameters(), finetune_lr)
 
-    sched = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=3, verbose=True)
+    sched = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=3)
     
     for epoch in range(epochs): 
         model.train()
@@ -66,7 +66,7 @@ def fit_one_cycle(epochs,  model, train_loader, val_loader, device, pretrained_l
         lrs = []
         for batch in train_loader:
             loss = training_step(model, batch, device)
-            train_losses.append(loss)
+            train_losses.append(loss.detach())
             loss.backward()
             
             optimizer.step()

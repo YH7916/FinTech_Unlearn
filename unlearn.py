@@ -69,14 +69,14 @@ def blindspot_unlearner(
     optimizer="adam",
     lr=0.01,
     batch_size=256,
-    num_workers=32,
+    num_workers=0,
     device="cuda",
     KL_temperature=1,
 ):
     # creating the unlearning dataset.
     unlearning_data = UnLearningData(forget_data=forget_data, retain_data=retain_data)
     unlearning_loader = DataLoader(
-        unlearning_data, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True
+        unlearning_data, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=(device == "cuda")
     )
 
     unlearning_teacher.eval()
@@ -130,7 +130,7 @@ def blindspot_unlearner_retain_aware(
     epochs=10,
     lr=0.01,
     batch_size=256,
-    num_workers=32,
+    num_workers=0,
     device="cuda",
     KL_temperature=1,
     retain_ce_weight=1.0,
@@ -149,7 +149,7 @@ def blindspot_unlearner_retain_aware(
     """
     unlearning_data = UnLearningDataWithLabel(forget_data=forget_data, retain_data=retain_data)
     unlearning_loader = DataLoader(
-        unlearning_data, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True
+        unlearning_data, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=(device == "cuda")
     )
 
     unlearning_teacher.eval()
