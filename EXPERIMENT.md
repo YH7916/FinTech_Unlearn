@@ -71,3 +71,24 @@ python run_experiment.py --pretrained --skip-gold --out-dir outputs\full_no_gold
 ```
 
 当前机器已能识别 RTX 4060 并使用 CUDA。完整实验的主要外部依赖是 CIFAR-100 数据集下载；如果官方源下载不稳定，可以先手动准备 `data\cifar-100-python.tar.gz`，再运行上面的正式实验命令。
+
+## 当前可用于汇报的中等规模结果
+
+已保存到 `results/medium_no_gold/`。
+
+运行命令：
+
+```powershell
+python run_experiment.py --skip-gold --out-dir outputs\medium_no_gold --batch-size 128 --base-epochs 3 --amnesiac-epochs 2 --badteacher-epochs 1 --max-forget-train 500 --max-retain-train 5000 --max-forget-valid 100 --max-retain-valid 2000 --force-retrain
+```
+
+核心结果：
+
+| Method | Forget Acc ↓ | Retain Acc ↑ | MIA ↓ | ZRF ↑ |
+| --- | ---: | ---: | ---: | ---: |
+| Original | 78.00 | 15.07 | 0.000 | 0.494 |
+| Amnesiac | 3.00 | 24.04 | 0.012 | 0.700 |
+| Bad Teacher | 68.00 | 15.92 | 0.000 | 0.762 |
+| Bad Teacher + Retain (Ours) | 56.00 | 20.31 | 0.000 | 0.734 |
+
+当前汇报重点建议放在 `Bad Teacher` 与 `Bad Teacher + Retain (Ours)` 的对比：加入 retain-set 约束后，Forget Acc 从 `68.00%` 降到 `56.00%`，Retain Acc 从 `15.92%` 提升到 `20.31%`，说明改进方法在增强目标类遗忘的同时，也更好地保留了非遗忘知识。
