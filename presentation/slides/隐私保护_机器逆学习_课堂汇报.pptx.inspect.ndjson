@@ -1,0 +1,155 @@
+{"kind":"deck","id":"pr/vah6wz","name":"Deck"}
+{"kind":"layout","layoutId":"c2b641d6-4fa7-457f-9893-47c84865bdc0","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"a513f015-a8e4-4582-a86b-6ebaf580e67a","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/0oecgv","slide":1,"title":"方向：隐私保护","textShapes":7}
+{"kind":"shape","id":"sh/ytsfels7","slide":1,"bbox":[56,56,190,38]}
+{"kind":"textbox","id":"sh/lwje90bi","slide":1,"text":"方向：隐私保护","textPreview":"方向：隐私保护","textChars":7,"textLines":1,"bbox":[68,64,166,24]}
+{"kind":"textbox","id":"sh/0vaxgvad","slide":1,"text":"面向图像分类模型的机器逆学习\n方法复现、隐私评估与改进","textPreview":"面向图像分类模型的机器逆学习 | 方法复现、隐私评估与改进","textChars":27,"textLines":2,"bbox":[56,172,900,190]}
+{"kind":"textbox","id":"sh/bq1w3qtg","slide":1,"text":"课堂汇报：复现 Amnesiac/Bad Teacher，提出 Retain-Aware 改进","textPreview":"课堂汇报：复现 Amnesiac/Bad Teacher，提出 Retain-Aware 改进","textChars":47,"textLines":1,"bbox":[60,410,760,42]}
+{"kind":"shape","id":"sh/qp8falsv","slide":1,"bbox":[870,172,310,300]}
+{"kind":"textbox","id":"sh/dsje5gbm","slide":1,"text":"Forget\nRetain\nGold","textPreview":"Forget | Retain | Gold","textChars":18,"textLines":3,"bbox":[930,224,200,150]}
+{"kind":"textbox","id":"sh/craxcva1","slide":1,"text":"低成本删除指定数据影响","textPreview":"低成本删除指定数据影响","textChars":11,"textLines":1,"bbox":[884,386,280,36]}
+{"kind":"textbox","id":"sh/32hwz6tk","slide":1,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/218f61sz","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/0oecgv","slide":1,"text":"开场明确：不是做隐私计算方向，而是课程资料里的隐私保护方向；明天重点讲研究设计，不伪造实验结果。"}
+{"kind":"slide","id":"sl/5yntde","slide":2,"title":"为什么金融模型需要“忘记”数据","textShapes":10}
+{"kind":"textbox","id":"sh/7u9kb698","slide":2,"text":"为什么金融模型需要“忘记”数据","textPreview":"为什么金融模型需要“忘记”数据","textChars":15,"textLines":1,"bbox":[56,52,900,58]}
+{"kind":"shape","id":"sh/sf2l4bqt","slide":2,"bbox":[82,164,300,86]}
+{"kind":"textbox","id":"sh/tgbmdgre","slide":2,"text":"用户撤回授权","textPreview":"用户撤回授权","textChars":6,"textLines":1,"bbox":[108,182,250,36]}
+{"kind":"textbox","id":"sh/ip03y18r","slide":2,"text":"用户要求删除数据，模型也应降低对这些数据的依赖","textPreview":"用户要求删除数据，模型也应降低对这些数据的依赖","textChars":23,"textLines":1,"bbox":[430,182,690,48]}
+{"kind":"shape","id":"sh/jq9k769w","slide":2,"bbox":[82,296,300,86]}
+{"kind":"textbox","id":"sh/kril0bqh","slide":2,"text":"错误或违规数据","textPreview":"错误或违规数据","textChars":7,"textLines":1,"bbox":[108,314,250,36]}
+{"kind":"textbox","id":"sh/5sr29gr2","slide":2,"text":"训练集中发现问题样本后，需要修正模型行为","textPreview":"训练集中发现问题样本后，需要修正模型行为","textChars":20,"textLines":1,"bbox":[430,314,690,48]}
+{"kind":"shape","id":"sh/alg3u1sf","slide":2,"bbox":[82,428,300,86]}
+{"kind":"textbox","id":"sh/vmpk3m90","slide":2,"text":"合规与审计","textPreview":"合规与审计","textChars":5,"textLines":1,"bbox":[108,446,250,36]}
+{"kind":"textbox","id":"sh/r6xgjeh8","slide":2,"text":"模型更新应能解释：删了什么、影响是否消除","textPreview":"模型更新应能解释：删了什么、影响是否消除","textChars":20,"textLines":1,"bbox":[430,446,690,48]}
+{"kind":"textbox","id":"sh/65oza90n","slide":2,"text":"关键问题：删除原始记录，不等于删除模型参数中的影响。","textPreview":"关键问题：删除原始记录，不等于删除模型参数中的影响。","textChars":26,"textLines":1,"bbox":[108,585,940,42]}
+{"kind":"textbox","id":"sh/t8zyloze","slide":2,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/s76hcjit","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/5yntde","slide":2,"text":"用金融场景解释意义：交易、画像、风险偏好都可能进入模型。逆学习的价值是让模型层面可删除、可审计。"}
+{"kind":"slide","id":"sl/gwkdzr","slide":3,"title":"资料支持这个选题能快速落地","textShapes":11}
+{"kind":"textbox","id":"sh/t032xgbi","slide":3,"text":"资料支持这个选题能快速落地","textPreview":"资料支持这个选题能快速落地","textChars":13,"textLines":1,"bbox":[56,52,900,58]}
+{"kind":"textbox","id":"sh/6dsjmls7","slide":3,"text":"作业方向","textPreview":"作业方向","textChars":4,"textLines":1,"bbox":[86,152,210,34]}
+{"kind":"shape","id":"sh/re1kvqtc","slide":3,"bbox":[306,144,820,56]}
+{"kind":"textbox","id":"sh/4ba1kba1","slide":3,"text":"方向二：针对图像分类模型的机器逆学习","textPreview":"方向二：针对图像分类模型的机器逆学习","textChars":18,"textLines":1,"bbox":[332,158,760,28]}
+{"kind":"textbox","id":"sh/5cj2tgbm","slide":3,"text":"已有代码","textPreview":"已有代码","textChars":4,"textLines":1,"bbox":[86,244,210,34]}
+{"kind":"shape","id":"sh/i9sji1sv","slide":3,"bbox":[306,236,820,56]}
+{"kind":"textbox","id":"sh/ja1kr6tg","slide":3,"text":"CIFAR100 Super20、ResNet18、Amnesiac baseline","textPreview":"CIFAR100 Super20、ResNet18、Amnesiac baseline","textChars":43,"textLines":1,"bbox":[332,250,760,28]}
+{"kind":"textbox","id":"sh/w7q1grap","slide":3,"text":"已推进点","textPreview":"已推进点","textChars":4,"textLines":1,"bbox":[86,336,210,34]}
+{"kind":"shape","id":"sh/h8jipwba","slide":3,"bbox":[306,328,820,56]}
+{"kind":"textbox","id":"sh/h0z6hkna","slide":3,"text":"Bad Teacher、Retain-Aware BT、MIA、ZRF","textPreview":"Bad Teacher、Retain-Aware BT、MIA、ZRF","textChars":35,"textLines":1,"bbox":[332,342,760,28]}
+{"kind":"textbox","id":"sh/gzqp8fmp","slide":3,"text":"明天汇报","textPreview":"明天汇报","textChars":4,"textLines":1,"bbox":[86,428,210,34]}
+{"kind":"shape","id":"sh/fyhofa5k","slide":3,"bbox":[306,420,820,56]}
+{"kind":"textbox","id":"sh/ud87654z","slide":3,"text":"讲问题、方法、指标、改进和实验计划","textPreview":"讲问题、方法、指标、改进和实验计划","textChars":17,"textLines":1,"bbox":[332,434,760,28]}
+{"kind":"textbox","id":"sh/tcz6d0ne","slide":3,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/sbqp4vmt","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/gwkdzr","slide":3,"text":"强调选择依据来自 final/2026隐私保护大作业，不再说隐私计算。说明这个方向已有代码和明确 TODO，适合做成研究报告。"}
+{"kind":"slide","id":"sl/2kxbh2","slide":4,"title":"研究问题：接近 Gold model，而不是简单让准确率归零","textShapes":13}
+{"kind":"textbox","id":"sh/365wvidg","slide":4,"text":"研究问题：接近 Gold model，而不是简单让准确率归零","textPreview":"研究问题：接近 Gold model，而不是简单让准确率归零","textChars":30,"textLines":1,"bbox":[56,52,1080,58]}
+{"kind":"shape","id":"sh/47ed4ne1","slide":4,"bbox":[80,190,300,180]}
+{"kind":"textbox","id":"sh/p87exsv6","slide":4,"text":"Original model","textPreview":"Original model","textChars":14,"textLines":1,"bbox":[102,216,256,34]}
+{"kind":"textbox","id":"sh/q9gf6xwr","slide":4,"text":"全量数据训练\n含 forget data 影响","textPreview":"全量数据训练 | 含 forget data 影响","textChars":23,"textLines":2,"bbox":[102,268,250,72]}
+{"kind":"shape","id":"sh/rapwzidc","slide":4,"bbox":[458,190,300,180]}
+{"kind":"textbox","id":"sh/cbyx8nex","slide":4,"text":"Unlearning","textPreview":"Unlearning","textChars":10,"textLines":1,"bbox":[480,216,256,34]}
+{"kind":"textbox","id":"sh/dw7e1svi","slide":4,"text":"低成本更新\n删除指定影响","textPreview":"低成本更新 | 删除指定影响","textChars":12,"textLines":2,"bbox":[480,268,250,72]}
+{"kind":"shape","id":"sh/6dcvutwn","slide":4,"bbox":[836,190,300,180]}
+{"kind":"textbox","id":"sh/7elwnyx8","slide":4,"text":"Gold model","textPreview":"Gold model","textChars":10,"textLines":1,"bbox":[858,216,256,34]}
+{"kind":"textbox","id":"sh/v6tsnyls","slide":4,"text":"删除后重训\n理想参照","textPreview":"删除后重训 | 理想参照","textChars":10,"textLines":2,"bbox":[858,268,250,72]}
+{"kind":"textbox","id":"sh/a5kretk7","slide":4,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[390,245,52,54]}
+{"kind":"textbox","id":"sh/x8vap83y","slide":4,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[768,245,52,54]}
+{"kind":"textbox","id":"sh/w7m9g32d","slide":4,"text":"评价标准：forget set 上接近 Gold，retain set 上接近 Original。","textPreview":"评价标准：forget set 上接近 Gold，retain set 上接近 Original。","textChars":49,"textLines":1,"bbox":[128,470,980,42]}
+{"kind":"textbox","id":"sh/n2tsjylw","slide":4,"text":"这能避免把“遗忘”误解成盲目降低所有相关预测能力。","textPreview":"这能避免把“遗忘”误解成盲目降低所有相关预测能力。","textChars":25,"textLines":1,"bbox":[128,526,840,34]}
+{"kind":"textbox","id":"sh/m1kratkb","slide":4,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/94bal83m","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/2kxbh2","slide":4,"text":"这里把问题讲清楚：Gold model 是删除后重训的参照。逆学习不是乱改模型，而是用更低成本逼近这个参照。"}
+{"kind":"slide","id":"sl/ibz7ff","slide":5,"title":"先复现，再改进：两条 baseline 给出参照","textShapes":8}
+{"kind":"textbox","id":"sh/ex0vixs7","slide":5,"text":"先复现，再改进：两条 baseline 给出参照","textPreview":"先复现，再改进：两条 baseline 给出参照","textChars":24,"textLines":1,"bbox":[56,52,980,58]}
+{"kind":"shape","id":"sh/1kbetcbi","slide":5,"bbox":[84,156,500,360]}
+{"kind":"textbox","id":"sh/gj2dk7ax","slide":5,"text":"Amnesiac","textPreview":"Amnesiac","textChars":8,"textLines":1,"bbox":[116,190,420,42]}
+{"kind":"textbox","id":"sh/3mtwv2to","slide":5,"text":"思路：抵消目标数据带来的训练影响\n作用：课程 notebook 中已有测试入口\n输出：作为第一组可复现实验结果","textPreview":"思路：抵消目标数据带来的训练影响 | 作用：课程 notebook 中已有测试入口 | 输出：作为第一组可复现实验结果","textChars":55,"textLines":3,"bbox":[116,260,410,160]}
+{"kind":"shape","id":"sh/2lkfmxs3","slide":5,"bbox":[696,156,500,360]}
+{"kind":"textbox","id":"sh/pobexcbu","slide":5,"text":"Bad Teacher / Blindspot","textPreview":"Bad Teacher / Blindspot","textChars":23,"textLines":1,"bbox":[728,190,430,42]}
+{"kind":"textbox","id":"sh/on2xo7a9","slide":5,"text":"思路：保留数据模仿原教师\n遗忘数据模仿无效教师\n输出：双教师 KL 蒸馏训练逻辑","textPreview":"思路：保留数据模仿原教师 | 遗忘数据模仿无效教师 | 输出：双教师 KL 蒸馏训练逻辑","textChars":40,"textLines":3,"bbox":[728,260,410,160]}
+{"kind":"textbox","id":"sh/jq9wjitk","slide":5,"text":"我的方法在 Bad Teacher 上做轻量可解释改进。","textPreview":"我的方法在 Bad Teacher 上做轻量可解释改进。","textChars":28,"textLines":1,"bbox":[170,574,820,40]}
+{"kind":"textbox","id":"sh/ipgvadcz","slide":5,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/gri18f2x","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/ibz7ff","slide":5,"text":"这页说明工作路径：先复现 Amnesiac 和 Bad Teacher，再补 MIA/ZRF 指标，最后做 Retain-Aware Bad Teacher 改进。"}
+{"kind":"slide","id":"sl/ogacxe","slide":6,"title":"改进方法：Retain-Aware Bad Teacher","textShapes":11}
+{"kind":"textbox","id":"sh/xs7qlkji","slide":6,"text":"改进方法：Retain-Aware Bad Teacher","textPreview":"改进方法：Retain-Aware Bad Teacher","textChars":29,"textLines":1,"bbox":[56,52,900,58]}
+{"kind":"textbox","id":"sh/a5w7q5k7","slide":6,"text":"普通 Bad Teacher 的不足：保留数据只靠软标签蒸馏，可能损伤保留类别边界。","textPreview":"普通 Bad Teacher 的不足：保留数据只靠软标签蒸馏，可能损伤保留类别边界。","textChars":42,"textLines":1,"bbox":[80,130,1000,36]}
+{"kind":"shape","id":"sh/b658ja1s","slide":6,"bbox":[92,224,240,82]}
+{"kind":"textbox","id":"sh/o3epov21","slide":6,"text":"Forget set","textPreview":"Forget set","textChars":10,"textLines":1,"bbox":[112,246,200,32]}
+{"kind":"shape","id":"sh/94nqh0jm","slide":6,"bbox":[374,224,520,82]}
+{"kind":"textbox","id":"sh/m1w7mlkv","slide":6,"text":"模仿随机初始化的无能教师","textPreview":"模仿随机初始化的无能教师","textChars":12,"textLines":1,"bbox":[400,246,470,32]}
+{"kind":"shape","id":"sh/n258fq1g","slide":6,"bbox":[934,224,190,82]}
+{"kind":"textbox","id":"sh/8zi90zi5","slide":6,"text":"加强遗忘","textPreview":"加强遗忘","textChars":4,"textLines":1,"bbox":[954,246,150,32]}
+{"kind":"shape","id":"sh/t0rqt4jq","slide":6,"bbox":[92,362,240,82]}
+{"kind":"textbox","id":"sh/lwz6dkzm","slide":6,"text":"Retain set","textPreview":"Retain set","textChars":10,"textLines":1,"bbox":[112,384,200,32]}
+{"kind":"shape","id":"sh/0vqp4zy1","slide":6,"bbox":[374,362,520,82]}
+{"kind":"textbox","id":"sh/zuhobuhg","slide":6,"text":"模仿原教师，同时加入真实标签 CE","textPreview":"模仿原教师，同时加入真实标签 CE","textChars":17,"textLines":1,"bbox":[400,384,470,32]}
+{"kind":"shape","id":"sh/yt872pgv","slide":6,"bbox":[934,362,190,82]}
+{"kind":"textbox","id":"sh/d8z69kza","slide":6,"text":"保留能力","textPreview":"保留能力","textChars":4,"textLines":1,"bbox":[954,384,150,32]}
+{"kind":"textbox","id":"sh/c76p0fi5","slide":6,"text":"总损失：L_total = L_KD + λ · CE(student(retain), y_true)。","textPreview":"总损失：L_total = L_KD + λ · CE(student(retain), y_true)。","textChars":53,"textLines":1,"bbox":[112,544,760,42]}
+{"kind":"textbox","id":"sh/b6xo7ahk","slide":6,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/q5o7y50z","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/ogacxe","slide":6,"text":"把方法讲成直观逻辑：forget set 仍按 Bad Teacher 去随机化，retain set 额外用真实标签锚定，减少遗忘外溢。"}
+{"kind":"slide","id":"sl/ccrbzh","slide":7,"title":"实验看两件事：是否忘得掉，是否保得住","textShapes":22}
+{"kind":"textbox","id":"sh/mdgzadg3","slide":7,"text":"实验看两件事：是否忘得掉，是否保得住","textPreview":"实验看两件事：是否忘得掉，是否保得住","textChars":18,"textLines":1,"bbox":[56,52,980,58]}
+{"kind":"shape","id":"sh/9grilsfe","slide":7,"bbox":[78,140,260,54]}
+{"kind":"textbox","id":"sh/8fihcnyt","slide":7,"text":"对象","textPreview":"对象","textChars":2,"textLines":1,"bbox":[94,154,228,24]}
+{"kind":"shape","id":"sh/v290n2xk","slide":7,"bbox":[338,140,520,54]}
+{"kind":"textbox","id":"sh/u10zexgz","slide":7,"text":"作用","textPreview":"作用","textChars":2,"textLines":1,"bbox":[354,154,488,24]}
+{"kind":"shape","id":"sh/h4ripcfq","slide":7,"bbox":[858,140,320,54]}
+{"kind":"textbox","id":"sh/w3ihg7y5","slide":7,"text":"核心指标","textPreview":"核心指标","textChars":4,"textLines":1,"bbox":[874,154,288,24]}
+{"kind":"shape","id":"sh/b65gbyxg","slide":7,"bbox":[78,194,260,66]}
+{"kind":"textbox","id":"sh/a5wz2tgv","slide":7,"text":"Original","textPreview":"Original","textChars":8,"textLines":1,"bbox":[94,212,228,30]}
+{"kind":"shape","id":"sh/svm5kv2t","slide":7,"bbox":[338,194,520,66]}
+{"kind":"textbox","id":"sh/twv6d0je","slide":7,"text":"全量训练模型，作为逆学习起点","textPreview":"全量训练模型，作为逆学习起点","textChars":14,"textLines":1,"bbox":[354,212,488,30]}
+{"kind":"shape","id":"sh/6t4nilkn","slide":7,"bbox":[858,194,320,66]}
+{"kind":"textbox","id":"sh/rudobq18","slide":7,"text":"retain acc","textPreview":"retain acc","textChars":10,"textLines":1,"bbox":[874,212,288,30]}
+{"kind":"shape","id":"sh/gzm5of2p","slide":7,"bbox":[78,260,260,66]}
+{"kind":"textbox","id":"sh/10v6hkja","slide":7,"text":"Gold retrain","textPreview":"Gold retrain","textChars":12,"textLines":1,"bbox":[94,278,228,30]}
+{"kind":"shape","id":"sh/ex4nm5kz","slide":7,"bbox":[338,260,520,66]}
+{"kind":"textbox","id":"sh/fydofa14","slide":7,"text":"删除 forget set 后重训，作为理想参照","textPreview":"删除 forget set 后重训，作为理想参照","textChars":24,"textLines":1,"bbox":[354,278,488,30]}
+{"kind":"shape","id":"sh/w325cb2l","slide":7,"bbox":[858,260,320,66]}
+{"kind":"textbox","id":"sh/h4b65g36","slide":7,"text":"JS distance","textPreview":"JS distance","textChars":11,"textLines":1,"bbox":[874,278,288,30]}
+{"kind":"shape","id":"sh/dojut8ri","slide":7,"bbox":[78,326,260,66]}
+{"kind":"textbox","id":"sh/cnadk3qd","slide":7,"text":"Amnesiac","textPreview":"Amnesiac","textChars":8,"textLines":1,"bbox":[94,344,228,30]}
+{"kind":"shape","id":"sh/bm1cry9s","slide":7,"bbox":[338,326,520,66]}
+{"kind":"textbox","id":"sh/qlsvid87","slide":7,"text":"课程 baseline","textPreview":"课程 baseline","textChars":11,"textLines":1,"bbox":[354,344,488,30]}
+{"kind":"shape","id":"sh/lc3uxsru","slide":7,"bbox":[858,326,320,66]}
+{"kind":"textbox","id":"sh/kbadonq9","slide":7,"text":"forget acc","textPreview":"forget acc","textChars":10,"textLines":1,"bbox":[874,344,288,30]}
+{"kind":"shape","id":"sh/za1cvi9o","slide":7,"bbox":[78,392,260,66]}
+{"kind":"textbox","id":"sh/y9svmd83","slide":7,"text":"Bad Teacher","textPreview":"Bad Teacher","textChars":11,"textLines":1,"bbox":[94,410,228,30]}
+{"kind":"shape","id":"sh/9g3u1srq","slide":7,"bbox":[338,392,520,66]}
+{"kind":"textbox","id":"sh/8fudsnq5","slide":7,"text":"复现方法","textPreview":"复现方法","textChars":4,"textLines":1,"bbox":[354,410,488,30]}
+{"kind":"shape","id":"sh/6lormpon","slide":7,"bbox":[858,392,320,66]}
+{"kind":"textbox","id":"sh/rmxsvup8","slide":7,"text":"forget + retain","textPreview":"forget + retain","textChars":15,"textLines":1,"bbox":[874,410,288,30]}
+{"kind":"shape","id":"sh/sn69oz6t","slide":7,"bbox":[78,458,260,66]}
+{"kind":"textbox","id":"sh/tofax47e","slide":7,"text":"Ours","textPreview":"Ours","textChars":4,"textLines":1,"bbox":[94,476,228,30]}
+{"kind":"shape","id":"sh/eporq9oz","slide":7,"bbox":[338,458,520,66]}
+{"kind":"textbox","id":"sh/fqxszepk","slide":7,"text":"Retain-Aware Bad Teacher","textPreview":"Retain-Aware Bad Teacher","textChars":24,"textLines":1,"bbox":[354,476,488,30]}
+{"kind":"shape","id":"sh/gr69sz65","slide":7,"bbox":[858,458,320,66]}
+{"kind":"textbox","id":"sh/1sfa147a","slide":7,"text":"综合表现","textPreview":"综合表现","textChars":4,"textLines":1,"bbox":[874,476,288,30]}
+{"kind":"textbox","id":"sh/2t8ru9ov","slide":7,"text":"新增指标：MIA 衡量隐私泄露，ZRF 衡量与随机教师的接近度。","textPreview":"新增指标：MIA 衡量隐私泄露，ZRF 衡量与随机教师的接近度。","textChars":32,"textLines":1,"bbox":[104,555,980,36]}
+{"kind":"textbox","id":"sh/3uhs3epg","slide":7,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/badsnehk","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/ccrbzh","slide":7,"text":"这页讲清楚最终报告的实验表怎么来。不要说已有结果，只说将比较哪些对象、用哪些指标评价。"}
+{"kind":"slide","id":"sl/liayon","slide":8,"title":"最终交付：方法复现、隐私指标、保留锚定改进","textShapes":13}
+{"kind":"textbox","id":"sh/6pcjeh43","slide":8,"text":"最终交付：方法复现、隐私指标、保留锚定改进","textPreview":"最终交付：方法复现、隐私指标、保留锚定改进","textChars":21,"textLines":1,"bbox":[56,52,1000,58]}
+{"kind":"shape","id":"sh/tsn29wnu","slide":8,"bbox":[96,168,86,86]}
+{"kind":"textbox","id":"sh/sru1grm9","slide":8,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[112,186,54,42]}
+{"kind":"textbox","id":"sh/j2lk325s","slide":8,"text":"复现 Amnesiac 与 Bad Teacher","textPreview":"复现 Amnesiac 与 Bad Teacher","textChars":25,"textLines":1,"bbox":[220,170,520,36]}
+{"kind":"textbox","id":"sh/i1cjah47","slide":8,"text":"形成可对比的逆学习 baseline","textPreview":"形成可对比的逆学习 baseline","textChars":18,"textLines":1,"bbox":[220,214,780,32]}
+{"kind":"shape","id":"sh/54325cni","slide":8,"bbox":[96,294,86,86]}
+{"kind":"textbox","id":"sh/43u1c7mx","slide":8,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[112,312,54,42]}
+{"kind":"textbox","id":"sh/3y5kf65w","slide":8,"text":"加入 MIA 与 ZRF 指标","textPreview":"加入 MIA 与 ZRF 指标","textChars":15,"textLines":1,"bbox":[220,296,520,36]}
+{"kind":"textbox","id":"sh/2xw3m14b","slide":8,"text":"准确率之外评估隐私泄露和遗忘程度","textPreview":"准确率之外评估隐私泄露和遗忘程度","textChars":16,"textLines":1,"bbox":[220,340,780,32]}
+{"kind":"shape","id":"sh/kf21ory1","slide":8,"bbox":[96,420,86,86]}
+{"kind":"textbox","id":"sh/lgbihcfm","slide":8,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[112,438,54,42]}
+{"kind":"textbox","id":"sh/ydkjmhgv","slide":8,"text":"验证 Retain-Aware BT","textPreview":"验证 Retain-Aware BT","textChars":18,"textLines":1,"bbox":[220,422,520,36]}
+{"kind":"textbox","id":"sh/jet0fmxg","slide":8,"text":"比较遗忘效果、保留能力和运行成本","textPreview":"比较遗忘效果、保留能力和运行成本","textChars":16,"textLines":1,"bbox":[220,466,780,32]}
+{"kind":"textbox","id":"sh/cb21k7y5","slide":8,"text":"明天汇报到研究设计即可；最终大报告补实验表、图和局限性讨论。","textPreview":"明天汇报到研究设计即可；最终大报告补实验表、图和局限性讨论。","textChars":30,"textLines":1,"bbox":[100,585,1010,38]}
+{"kind":"textbox","id":"sh/xcbidcfq","slide":8,"text":"隐私保护 · 机器逆学习","textPreview":"隐私保护 · 机器逆学习","textChars":12,"textLines":1,"bbox":[52,664,360,24]}
+{"kind":"textbox","id":"sh/ap0jixgz","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1180,660,50,28]}
+{"kind":"notes","id":"nt/liayon","slide":8,"text":"收束到三个最终交付，让老师知道这个题不是泛泛而谈，而是有代码入口、指标入口和可验证改进点。"}
