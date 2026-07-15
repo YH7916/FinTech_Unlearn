@@ -2,12 +2,13 @@
 
 // 仅保留字体（思源宋体）与垂直居中，其余一律用模板自带样式
 #set text(font: ("Source Han Serif", "STSong", "SimSun"))
+#set outline(depth: 1) // 目录只列一级章节，简洁
 
 #show: slides.with(
   title: "图像分类模型的机器逆学习：复现、评估与保留感知改进",
   subtitle: "开题答辩",
   date: "2026年8月",
-  authors: ("组员：___ · ___"),
+  authors: ("李宇晗 · 窦宇浩"),
   title-color: rgb("#20456e"),
   ratio: 16 / 9,
   layout: "medium",
@@ -60,10 +61,16 @@
 
 == Amnesiac Unlearning（基线）
 
-/ 原理: 遗忘样本重标为*随机错误标签*后微调，覆盖原有映射。
+/ 原理: 让模型"记混"—— 把遗忘样本的标签换成随机错的，再微调几轮，原来对该类的正确映射就被覆盖掉。
 
-- 定位：最简基线；
-- 调节*学习率 / 批大小*，分析对"遗忘—保留"折中的影响。
+*具体做法：*
++ 取遗忘类（火箭）的训练样本，逐个赋予*随机错误标签*；
++ 与保留数据混合，对原模型继续微调（少量 epoch）；
++ 遗忘类的判别被打乱，保留类基本不受影响。
+
+/ 我们要分析: 学习率 ∈ {1e-3, 1e-4, 1e-5}、批大小 ∈ {128, 256, 512}，观察对"遗忘彻底性 vs 保留性能"的影响。
+
+/ 定位: 最简单直接的基线，用来和 Bad Teacher、改进法对比。
 
 // ================================================================
 = 任务二 · 复现 Bad Teacher
@@ -146,40 +153,54 @@ $ cal(L)_"total" = cal(L)_"蒸馏" + lambda dot "CE"(f("保留样本"), y_"真")
 - *实现 MIA、ZRF 指标*（`metrics.py`）；
 - 保留感知改进的数据与损失、统一评估脚本。
 
+```python
+loss = UnlearnerLoss(out, y, teacher_good, teacher_bad, T)          # Bad Teacher 核心
+loss = kd_loss + lam * F.cross_entropy(out[retain], y_true[retain]) # 保留感知改进
+mia = get_membership_attack_prob(...);  zrf = compute_zrf(...)      # 两个指标
+```
+
 == 研究计划
 
-#table(
-  columns: (auto, 1fr, auto),
-  [*周次*], [*任务*], [*产出*],
-  [第 1 周], [五模型统一对比（含改进法）], [对比表],
-  [第 2 周], [超参 / $lambda$ 消融，相关性分析], [曲线图],
-  [第 3 周], [Gold Model 对照，结果分析], [结论],
-  [第 4 周], [结题报告、整理代码], [报告 + 代码],
-)
+#align(center)[
+  #table(
+    columns: (auto, auto, auto),
+    align: (center + horizon, left + horizon, left + horizon),
+    [*步骤*], [*任务*], [*产出*],
+    [第一步], [五模型统一对比（含改进法）], [对比表],
+    [第二步], [超参 / $lambda$ 消融，相关性分析], [曲线图],
+    [第三步], [Gold Model 对照，结果分析], [结论],
+    [第四步], [结题报告、整理代码], [报告 + 代码],
+  )
+]
 
 == 预期与创新点
 
-#table(
-  columns: (auto, auto, auto, auto, auto),
-  [*方法*], [Forget↓], [Retain↑], [MIA↓], [ZRF↑],
-  [Gold（金标准）], [≈随机], [高], [低], [高],
-  [Bad Teacher], [低], [中], [低], [高],
-  [*保留感知（本文）*], [*低*], [*高*], [*低*], [*高*],
-)
+#align(center)[
+  #table(
+    columns: (auto, auto, auto, auto, auto),
+    [*方法*], [Forget↓], [Retain↑], [MIA↓], [ZRF↑],
+    [Gold（金标准）], [≈随机], [高], [低], [高],
+    [Bad Teacher], [低], [中], [低], [高],
+    [*保留感知（本文）*], [*低*], [*高*], [*低*], [*高*],
+  )
 
-- 创新一：引入 MIA / ZRF，补齐"只看准确率"的短板；
-- 创新二：保留感知改进，缓解遗忘—保留张力。
+  #v(0.7em)
+  创新一：引入 MIA / ZRF，补齐"只看准确率"的短板\
+  创新二：保留感知改进，缓解遗忘—保留张力
+]
 
 // ================================================================
 = 总结
 
-== 一条工作线
+== 工作线
 
-/ 复现: Amnesiac + Bad Teacher（补全核心）。
+#align(center)[
+  *复现* —— Amnesiac + Bad Teacher（补全核心）
 
-/ 评估: 补上 MIA、ZRF，回答"是否真的忘了"。
+  *评估* —— 补上 MIA、ZRF，回答"是否真的忘了"
 
-/ 改进: 保留感知——有动机、可解释、可验证。
+  *改进* —— 保留感知：有动机、可解释、可验证
+]
 
 == 参考文献
 
@@ -192,11 +213,11 @@ $ cal(L)_"total" = cal(L)_"蒸馏" + lambda dot "CE"(f("保留样本"), y_"真")
 + Hayes J., et al. Inexact Unlearning Needs More Careful Evaluations to Avoid a False Sense of Privacy. arXiv, 2024.
 + Deep Unlearn: Benchmarking Machine Unlearning for Image Classification. arXiv, 2024.
 
-== 谢谢，敬请指导 <last>
+#page(header: none, footer: none)[
+  #align(center + horizon)[
+    #text(size: 30pt, weight: "bold")[感谢观看！]
 
-#align(center + horizon)[
-  #text(size: 1.4em)[*机器逆学习：复现 · 评估 · 改进*]
-
-  #v(0.6em)
-  让模型学会"遗忘"，也能被"验证"忘了
+    #v(1em)
+    #text(size: 18pt)[小组成员：李宇晗，窦宇浩]
+  ]
 ]
