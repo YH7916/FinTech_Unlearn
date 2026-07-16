@@ -92,3 +92,24 @@ python run_experiment.py --skip-gold --out-dir outputs\medium_no_gold --batch-si
 | Bad Teacher + Retain (Ours) | 56.00 | 20.31 | 0.000 | 0.734 |
 
 当前汇报重点建议放在 `Bad Teacher` 与 `Bad Teacher + Retain (Ours)` 的对比：加入 retain-set 约束后，Forget Acc 从 `68.00%` 降到 `56.00%`，Retain Acc 从 `15.92%` 提升到 `20.31%`，说明改进方法在增强目标类遗忘的同时，也更好地保留了非遗忘知识。
+
+## 当前主结果：完整 no-gold 实验
+
+已保存到 `results/full_no_gold/`。
+
+运行命令：
+
+```powershell
+python run_experiment.py --skip-gold --out-dir outputs\full_no_gold --batch-size 256 --base-epochs 5 --amnesiac-epochs 3 --badteacher-epochs 1 --force-retrain
+```
+
+核心结果：
+
+| Method | Forget Acc ↓ | Retain Acc ↑ | MIA ↓ | ZRF ↑ |
+| --- | ---: | ---: | ---: | ---: |
+| Original | 55.00 | 47.14 | 1.000 | 0.492 |
+| Amnesiac | 7.00 | 60.02 | 1.000 | 0.628 |
+| Bad Teacher | 22.00 | 47.67 | 1.000 | 0.745 |
+| Bad Teacher + Retain (Ours) | 23.00 | 54.25 | 1.000 | 0.702 |
+
+该结果更适合作为汇报主结果：`Bad Teacher + Retain (Ours)` 与 `Bad Teacher` 保持接近的遗忘效果，Forget Acc 分别为 `23.00%` 和 `22.00%`；同时 Retain Acc 从 `47.67%` 提升到 `54.25%`。因此这版结果应表述为“在基本维持遗忘效果的同时提升非遗忘知识保留能力”，不要表述为“遗忘更强”。

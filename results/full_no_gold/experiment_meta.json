@@ -1,0 +1,10 @@
+{
+  "device": "cuda",
+  "quick": false,
+  "forget_class": 69,
+  "num_forget_train": 500,
+  "num_retain_train": 49500,
+  "num_forget_valid": 100,
+  "num_retain_valid": 9900,
+  "num_retain_train_subset": 14850
+}

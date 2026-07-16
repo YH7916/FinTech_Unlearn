@@ -1,0 +1,5 @@
+Method,Forget_Acc,Retain_Acc,MIA,ZRF
+Original,55.0,47.14,1.0,0.492
+Amnesiac,7.0,60.02,1.0,0.628
+Bad Teacher,22.0,47.67,1.0,0.745
+Bad Teacher + Retain (Ours),23.0,54.25,1.0,0.702
