@@ -92,7 +92,7 @@
 
 / 全量 CUDA 结果: Bad Teacher 将 Forget Acc 降至 *22.00%*（原模型 55.00%），但 Retain Acc 为 47.67%，保留能力仍有提升空间。
 
-== 损失设计：逐样本选老师 + 温度蒸馏
+== 损失设计：逐样本选老师蒸馏
 
 学生按遗忘标记 $ell in {0,1}$ 逐样本选择模仿对象，用带温度 $T$ 的 KL 散度蒸馏：
 
@@ -124,7 +124,7 @@ for x, y in loader:                  # y=1 遗忘样本, y=0 保留样本
 // ================================================================
 = 任务三 · 完善评估指标
 
-== 为什么还要两个额外指标
+== 两个额外指标
 
 准确率只说明模型"答错了"，不代表它"没记住"—— 它可能只是嘴上不认、心里还记得。于是从两个角度补两把"尺子"：
 
@@ -163,17 +163,25 @@ $ cal(L)_"total" = cal(L)_"蒸馏" + lambda dot "CE"(f("保留样本"), y_"真")
 
 == 阶段性进展
 
-- 端到端框架、forget / retain 划分、Amnesiac 基线；
-- *补全 Bad Teacher 蒸馏核心*（`unlearn.py`）；
-- *实现 MIA、ZRF 指标*（`metrics.py`）；
-- 保留感知改进的数据与损失、统一评估脚本。
-- 完成全量 CUDA 对照：保留感知法在近似遗忘效果下，将 Retain Acc 提升 6.58 个百分点。
+/ 已完成: 端到端框架、Amnesiac 基线、Bad Teacher 蒸馏核心、保留感知损失与统一评估脚本。
 
-```python
-loss = UnlearnerLoss(out, y, teacher_good, teacher_bad, T)          # Bad Teacher 核心
-loss = kd_loss + lam * F.cross_entropy(out[retain], y_true[retain]) # 保留感知改进
-mia = get_membership_attack_prob(...);  zrf = compute_zrf(...)      # 两个指标
-```
+/ 全量 CUDA 对照（Gold Model 待补）: 在几乎相同的遗忘效果下，保留感知法将 Retain Acc 提升 *6.58* 个百分点。
+
+#align(center)[
+  #table(
+    columns: (2.4fr, 1fr, 1fr, 0.8fr),
+    align: (left + horizon, center + horizon, center + horizon, center + horizon),
+    inset: 0.45em,
+    stroke: (x: luma(205), y: luma(225)),
+    table.header(
+      [*方法*], [*Forget Acc ↓*], [*Retain Acc ↑*], [*ZRF ↑*],
+    ),
+    [Original], [55.00], [47.14], [0.492],
+    [Amnesiac], [7.00], [60.02], [0.628],
+    [Bad Teacher], [22.00], [47.67], [0.745],
+    [*Bad Teacher + Retain（本文）*], [*23.00*], [*54.25*], [*0.702*],
+  )
+]
 
 == 后续实验计划
 
